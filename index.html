@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonance - L'App de Collaboration Artistique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e5e4db;
+            color: #1d1d1d;
+        }
+
+        .navbar {
+            background-color: #1d1d1d;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Anton', sans-serif;
+            color: #f2f2f2;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        .download-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background-color: #f2f2f2;
+            color: #1d1d1d;
+        }
+
+        .download-btn:hover {
+            background-color: #e5e4db;
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background-color: #e5e4db;
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #1d1d1d;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #1f2020;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-buttons img {
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .app-buttons img:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            background-color: #f2f2f2;
+        }
+        .feedback-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem; /* équivalent à text-lg */
+    color: #1d1d1d;
+    text-decoration: none;
+    cursor: pointer;
+    transition: text-decoration 0.3s ease;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+.feedback-link:hover {
+    text-decoration: underline;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background-color: #e5e4db;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1d1d1d;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #1f2020;
+        }
+
+        .cta {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        .cta h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer {
+            background-color: #1d1d1d;
+            color: #f2f2f2;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .feature-card img {
+                height: 180px;
+            }
+
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .app-buttons img {
+                height: 50px;
+            }
+        }
+        .download-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            flex-direction: column;
+        }
+
+        .stores-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .stores-group img{
+          height: 5rem;
+        }
+
+        .download-cta {
+            padding: 1rem 2rem;
+            background-color: #1d1d1d;
+            color: #f2f2f2;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .download-cta:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+         /* Nouveaux styles pour l'accordéon */
+         .accordion {
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+
+        .accordion-item {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 1rem 1.5rem;
+            background: #1d1d1d;
+            color: #f2f2f2;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .accordion-header:hover {
+            background: #333;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fff;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+        }
+
+        .accordion-inner {
+            padding: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1d1d1d;
+        }
+
+        .accordion-header::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(45deg);
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Resonance</a>
+            <button class="download-btn">Télécharger l'app</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Connectez-vous . Créez . Collaborez</h1>
+      <p>Découvrez Resonance, l'application qui connecte les artistes. Créez des liens, partagez vos projets et trouvez les collaborateurs parfaits pour donner vie à votre musique.</p>
+      <div class="download-group">
+          <a href="#download" class="download-cta">
+              Télécharger Maintenant
+          </a>
+          <div class="stores-group">
+              <img src="img/apple.png" alt="Disponible sur l'App Store">
+              <img src="img/android-os.png" alt="Disponible sur Google Play">
+          </div>
+      </div>
+      <div class="mt-6">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSevX_cWXpyWWx6DnZDbs2AdLH1VqhLPKZkhk9fLqs691ri2QA/viewform?usp=header" 
+             target="_blank"
+             class="feedback-link">
+             Donnez-nous votre avis sur l'application 🗣️
+          </a>
+      </div>
+  </section>
+
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-card">
+                <img src="img/monochrome-view-person-playing-electric-guitar.jpg" alt="Musiciens">
+                <h3>Matchmaking Ciblé</h3>
+                <p>Notre algorithme trouve les collaborateurs parfaits selon vos critères et votre style</p>
+            </div>
+            <div class="feature-card">
+                <img src="img/chanteur.jpg" alt="Chanteurs">
+                <h3>Audio Intégré</h3>
+                <p>Échangez facilement des samples et des démos directement dans l'app</p>
+            </div>
+            <div class="feature-card">
+                <img src="img/compositeur.jpg" alt="Compositeurs">
+                <h3>Projets Collaboratifs</h3>
+                <p>Gérez vos collaborations et partagez vos créations en temps réel</p>
+            </div>
+        </div>
+        
+  </section>
+
+  <section>
+    <div class="accordion">
+      <h1 style="font-family: 'Anton', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      color: #1d1d1d;
+      text-align: center;">Fonctionnalités Clés</h1>
+      
+      <div class="accordion-item">
+          <div class="accordion-header">Recherche et Matching</div>
+          <div class="accordion-content">
+              <div class="accordion-inner">
+                  <ul class="feature-list">
+                      <li>Filtres avancés : instruments, styles musicaux, expérience</li>
+                      <li>Suggestions basées sur les profils et projets précédents</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <div class="accordion-header">Analytics et Dashboard</div>
+          <div class="accordion-content">
+              <div class="accordion-inner">
+                  <ul class="feature-list">
+                      <li>Statistiques sur les collaborations : nombre de projets, types de collaboration, popularité des profils</li>
+                      <li>Dashboard personnalisé pour suivre les activités en cours et les opportunités</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="accordion-item">
+          <div class="accordion-header">Messagerie</div>
+          <div class="accordion-content">
+              <div class="accordion-inner">
+                  <ul class="feature-list">
+                      <li>Système de messagerie instantanée pour faciliter la communication</li>
+                      <li>Notifications en temps réel pour les nouvelles collaborations et messages</li>
+                      <li>Création de groupes de chat à plusieurs personnes</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
+
+
+    <section class="cta">
+        <h2>Prêt à révolutionner votre façon de créer ?</h2>
+        <p>Téléchargez Resonance gratuitement et rejoignez notre communauté d'artistes</p>
+        <div class="app-buttons">
+            <img src="img/apple.png" alt="Disponible sur l'App Store">
+            <img src="img/android-os.png" alt="Disponible sur Google Play">
+        </div>
+        <div class="mt-6">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSevX_cWXpyWWx6DnZDbs2AdLH1VqhLPKZkhk9fLqs691ri2QA/viewform?usp=header" 
+               target="_blank"
+               class="feedback-link">
+               Donnez-nous votre avis sur l'application 🗣️
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Resonance. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+<script>
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+          const content = header.nextElementSibling;
+          header.classList.toggle('active');
+          
+          if (header.classList.contains('active')) {
+              content.classList.add('active');
+          } else {
+              content.classList.remove('active');
+          }
+      });
+  });
+</script>
